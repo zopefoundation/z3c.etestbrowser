@@ -24,11 +24,14 @@ related XML technologies.
 
 Example:
 
-  >>> from z3c.etestbrowser.testing import EtreeTestBrowser
-  >>> browser = EtreeTestBrowser()
+  >>> from z3c.etestbrowser.testing import ExtendedTestBrowser
+  >>> browser = ExtendedTestBrowser()
   >>> browser.open("http://localhost/")
-  >>> browser.contents
+  >>> print browser.contents
+  <!DOCTYPE ...>
+  ...
+  </html>
   >>> browser.etree
+  <etree._ElementTree object at 0x...>
   >>> browser.etree.xpath('//html')
-  []
-
+  [<Element html at ...>]

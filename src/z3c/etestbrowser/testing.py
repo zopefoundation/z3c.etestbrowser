@@ -16,6 +16,7 @@
 $Id$
 """
 
+import StringIO
 import lxml.etree
 
 import zope.testbrowser.testing
@@ -24,19 +25,27 @@ import zope.testbrowser.testing
 html_parser = lxml.etree.HTMLParser()
 
 
-class EtreeTestBrowser(zope.testbrowser.testing.Browser):
-    """A testbrowser derivation that offers its content 
-    also as an etree.
+class ExtendedTestBrowser(zope.testbrowser.testing.Browser):
+    """An extended testbrowser implementation.
+
+    Features:
+
+        - offers the content also as parsed etree
 
     """
+
+    _etree = None
 
     @property
     def etree(self):
         if self._etree is not None:
             return self._etree
-        self._etree = etree.parse(self.contents, html_parser)
+        # I'm not using any internal knowledge about testbrowser
+        # here, to avoid breakage. Memory usage won't be a problem.
+        content = StringIO.StringIO(self.contents)
+        self._etree = lxml.etree.parse(content, html_parser)
         return self._etree
 
     def _changed(self):
-        super(EtreeTestBrowser, self)._changed()
+        super(ExtendedTestBrowser, self)._changed()
         self._etree = None

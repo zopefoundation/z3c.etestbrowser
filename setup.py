@@ -9,6 +9,7 @@ setup(
     description="""\
 Extensions for zope.testbrowser.
 """,
+    long_description = open('README.txt').read(),
     packages=find_packages('src'),
     package_dir = {'': 'src'},
     include_package_data = True,

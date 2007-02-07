@@ -5,7 +5,7 @@ setup(
     version='1.0',
     author='Christian Theune',
     author_email='ct@gocept.com',
-    url='svn://svn.zope.org/repos/main/z3c.etestbrowser',
+    url='http://svn.zope.org/z3c.etestbrowser/trunk/',
     description="""\
 Extensions for zope.testbrowser.
 """,

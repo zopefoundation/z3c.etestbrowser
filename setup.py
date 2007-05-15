@@ -15,8 +15,10 @@ Extensions for zope.testbrowser.
     include_package_data = True,
     zip_safe=False,
     license='ZPL 2.1',
-
+    extras_require=dict(test=['zope.app.testing', 'zope.app.zcmlfiles',
+                              'zope.app.securitypolicy', 'zope.app.server']),
     install_requires=['setuptools',
-                      'lxml'
+                      'lxml',
+                      'zope.testbrowser'
                      ],
 )

@@ -1,0 +1,23 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <include package="zope.app.zcmlfiles" file="meta.zcml"/>
+  <include package="zope.app.zcmlfiles" />
+
+  <!-- Include Zope dependencies here -->
+  <include package="zope.publisher"/>
+  <include package="zope.traversing"/>
+  <include package="zope.traversing.browser"/>
+  <include package="zope.app.server"/>
+
+  <include package="zope.app.securitypolicy" file="meta.zcml"/>
+  <include package="zope.app.securitypolicy" />
+
+  <securityPolicy
+    component="zope.app.securitypolicy.zopepolicy.ZopeSecurityPolicy" />
+
+  <role id="zope.Anonymous" title="Everybody"
+                 description="All users have this role implicitly" />
+
+  <grant permission="zope.View"
+                  role="zope.Anonymous" />
+</configure>

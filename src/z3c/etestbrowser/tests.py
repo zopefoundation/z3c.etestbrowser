@@ -16,14 +16,24 @@
 $Id$
 """
 
+import os.path
 import unittest
 
 from zope.app.testing import functional
 from zope.testing import doctest
 
 
+layer = functional.ZCMLLayer(
+    os.path.join(os.path.split(__file__)[0], 'ftesting.zcml'),
+    __name__, 'ETestBrowserLayer')
+
+
 def test_suite():
-    return unittest.TestSuite(
-        functional.FunctionalDocFileSuite("README.txt",
-            optionflags=doctest.REPORT_NDIFF|doctest.NORMALIZE_WHITESPACE|
-                doctest.ELLIPSIS))
+    suite = unittest.TestSuite()
+    test = functional.FunctionalDocFileSuite(
+        "README.txt",
+        optionflags=doctest.REPORT_NDIFF|doctest.NORMALIZE_WHITESPACE|
+        doctest.ELLIPSIS)
+    test.layer = layer
+    suite.addTest(test)
+    return suite

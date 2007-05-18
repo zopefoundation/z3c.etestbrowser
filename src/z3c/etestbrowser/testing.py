@@ -34,6 +34,8 @@ class ExtendedTestBrowser(zope.testbrowser.testing.Browser):
 
     """
 
+    xml_strict = False
+
     _etree = None
 
     @property
@@ -42,8 +44,11 @@ class ExtendedTestBrowser(zope.testbrowser.testing.Browser):
             return self._etree
         # I'm not using any internal knowledge about testbrowser
         # here, to avoid breakage. Memory usage won't be a problem.
-        content = StringIO.StringIO(self.contents)
-        self._etree = lxml.etree.parse(content, html_parser)
+        if self.xml_strict:
+            parser = None
+        else:
+            parser = html_parser
+        self._etree = lxml.etree.XML(self.contents, parser)
         return self._etree
 
     def _changed(self):

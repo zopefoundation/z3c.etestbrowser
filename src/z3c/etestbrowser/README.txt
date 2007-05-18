@@ -6,10 +6,12 @@ This package provides some extensions to Zope 3's testbrowser. It is intended
 for extensions that have dependencies that we do not want to rely on in the
   Zope 3 core e.g. lxml.
 
+
 Requirements
 ============
 
  - lxml
+
 
 EtreeTestBrowser
 ================
@@ -30,6 +32,22 @@ Example::
   ...
   </html>
   >>> browser.etree
-  <etree._ElementTree object at 0x...>
-  >>> browser.etree.xpath('//html')
-  [<Element html at ...>]
+  <Element html at ...>
+  >>> browser.etree.xpath('//body')
+  [<Element body at ...>]
+
+
+Strict XML
+==========
+
+It is possible to force the test browser to use the xml parser::
+
+  >>> browser.xml_strict
+  False
+  >>> browser.xml_strict = True
+  >>> browser.open("http://localhost/")
+  >>> browser.etree
+  <Element {http://www.w3.org/1999/xhtml}html at ...>
+  >>> browser.etree.xpath(
+  ...     '//html:body', {'html': 'http://www.w3.org/1999/xhtml'})
+  [<Element {http://www.w3.org/1999/xhtml}body at ...>]

@@ -18,7 +18,7 @@ Extensions for zope.testbrowser.
     extras_require=dict(test=['zope.app.testing', 'zope.app.zcmlfiles',
                               'zope.app.securitypolicy', 'zope.app.server']),
     install_requires=['setuptools',
-                      'lxml',
+                      'lxml<2.0-dev',
                       'zope.testbrowser'
                      ],
 )

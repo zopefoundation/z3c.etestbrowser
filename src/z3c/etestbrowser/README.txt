@@ -51,3 +51,15 @@ It is possible to force the test browser to use the xml parser::
   >>> browser.etree.xpath(
   ...     '//html:body', {'html': 'http://www.w3.org/1999/xhtml'})
   [<Element {http://www.w3.org/1999/xhtml}body at ...>]
+
+LXML unicode support
+====================
+
+A couple of variations of libxml2 might interpret UTF-8 encoded strings
+incorrectly. We have a workaround for that. Let's have a look at a view that
+contains a German umlaut:
+
+  >>> browser.xml_strict = False
+  >>> browser.open('http://localhost/lxml.html')
+  >>> browser.etree.xpath("//span")[0].text
+  u'K\xfcgelblitz.'

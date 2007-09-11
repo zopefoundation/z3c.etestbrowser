@@ -1,4 +1,6 @@
-<configure xmlns="http://namespaces.zope.org/zope">
+<configure xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
+  i18n_domain="zope">
 
   <include package="zope.app.zcmlfiles" file="meta.zcml"/>
   <include package="zope.app.zcmlfiles" />
@@ -19,5 +21,13 @@
                  description="All users have this role implicitly" />
 
   <grant permission="zope.View"
-                  role="zope.Anonymous" />
+    role="zope.Anonymous" />
+
+  <browser:page
+    name="lxml.html"
+    for="*"
+    template="lxml.pt"
+    permission="zope.View"
+    />
+
 </configure>

@@ -16,13 +16,14 @@
 $Id$
 """
 
+import re
 import StringIO
 import lxml.etree
 
 import zope.testbrowser.testing
 
 
-html_parser = lxml.etree.HTMLParser()
+RE_CHARSET = re.compile('.*;charset=(.*)')
 
 
 class ExtendedTestBrowser(zope.testbrowser.testing.Browser):
@@ -45,10 +46,20 @@ class ExtendedTestBrowser(zope.testbrowser.testing.Browser):
         # I'm not using any internal knowledge about testbrowser
         # here, to avoid breakage. Memory usage won't be a problem.
         if self.xml_strict:
-            parser = None
+            self._etree = lxml.etree.XML(self.contents)
         else:
-            parser = html_parser
-        self._etree = lxml.etree.XML(self.contents, parser)
+            # This is a workaround against the broken fallback for 
+            # encoding detection of libxml2.
+            # We have a chance of knowing the encoding as Zope states this in
+            # the content-type response header.
+            content = self.contents
+            content_type = self.headers['content-type']
+            match = RE_CHARSET.match(content_type)
+            if match is not None:
+                charset = match.groups()[0]
+                content = content.decode(charset)
+            self._etree = lxml.etree.HTML(content)
+
         return self._etree
 
     def _changed(self):

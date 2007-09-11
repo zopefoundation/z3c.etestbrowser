@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='z3c.etestbrowser',
-    version='1.0.2',
+    version='1.0.3',
     author='Christian Theune',
     author_email='ct@gocept.com',
     url='http://svn.zope.org/z3c.etestbrowser/trunk/',

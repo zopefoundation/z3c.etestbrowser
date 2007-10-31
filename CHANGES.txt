@@ -1,0 +1,19 @@
+=======
+CHANGES
+=======
+
+1.0.4 (2007-??-??)
+------------------
+
+- Resolve ``ZopeSecurityPolicy`` deprecation warning.
+
+1.0.3 (2007-??-??)
+------------------
+
+- Remedy brown-bag 1.0.2-release: Someone already released 1.0.2-r* instead of
+  a .dev release making the 1.0.2 final too old. :/
+
+1.0.2 (2007-??-??)
+------------------
+
+- Helping libxml2 with some encoding guesswork.

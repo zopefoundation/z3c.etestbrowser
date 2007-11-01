@@ -52,7 +52,7 @@ setup(name='z3c.etestbrowser',
                                 'zope.app.securitypolicy',
                                 'zope.app.server']),
     install_requires=['setuptools',
-                      'lxml<2.0-dev',
+                      'lxml',
                       'zope.testbrowser'
                      ],
       include_package_data = True,

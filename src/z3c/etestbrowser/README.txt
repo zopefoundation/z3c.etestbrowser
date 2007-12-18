@@ -13,14 +13,14 @@ Requirements
  - lxml
 
 
-EtreeTestBrowser
-================
+etree support
+=============
 
-EtreeTestBrowser parses the result of a request into an etree using lxml (if
-it's text/html or text/xml).
+The extended test browser allows parsing of the result of a request into an
+etree using lxml (if the content type is text/html or text/xml).
 
-Useful to perform more detailed analysis of web pages using e.g. XPath and
-related XML technologies.
+This is useful to perform more detailed analysis of web pages using e.g. XPath
+and related XML technologies.
 
 Example::
 
@@ -38,7 +38,7 @@ Example::
 
 
 Strict XML
-==========
+----------
 
 It is possible to force the test browser to use the xml parser::
 
@@ -53,7 +53,7 @@ It is possible to force the test browser to use the xml parser::
   [<Element {http://www.w3.org/1999/xhtml}body at ...>]
 
 LXML unicode support
-====================
+--------------------
 
 A couple of variations of libxml2 might interpret UTF-8 encoded strings
 incorrectly. We have a workaround for that. Let's have a look at a view that
@@ -63,3 +63,24 @@ contains a German umlaut:
   >>> browser.open('http://localhost/lxml.html')
   >>> browser.etree.xpath("//span")[0].text
   u'K\xfcgelblitz.'
+
+
+Pretty printing
+===============
+
+Sometimes a normal `print` of the browsers contents is hard to read for
+debugging:
+
+  >>> browser.open('http://localhost/')
+  >>> print browser.contents
+  <!DOCTYPE html ...
+    ...Name...Title...Created...Modified...
+
+The extended test browser provides a method to provide a formatted version of
+the HTML (using htmllib internally):
+
+  >>> browser.pretty_print()
+  @import url(http://localhost/@@/zope3_tablelayout.css); User: Fallback
+  unauthenticated principal [Login][1] (image)[2] Location:...[top][3] /
+  Navigation
+  Loading... ... Name Title Created Modified ...

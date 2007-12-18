@@ -18,6 +18,9 @@ $Id$
 
 import re
 import StringIO
+import htmllib
+import formatter
+
 import lxml.etree
 
 import zope.testbrowser.testing
@@ -65,3 +68,16 @@ class ExtendedTestBrowser(zope.testbrowser.testing.Browser):
     def _changed(self):
         super(ExtendedTestBrowser, self)._changed()
         self._etree = None
+
+    def pretty_print(self):
+        """Print a pretty (formatted) version of the HTML content.
+
+        If the content is not text/html then it is just printed.
+        """
+        if not self.headers['content-type'].lower().startswith('text/html'):
+            print self.contents
+        else:
+            parser = htmllib.HTMLParser(
+                formatter.AbstractFormatter(formatter.DumbWriter()))
+            parser.feed(self.contents)
+            parser.close()

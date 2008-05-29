@@ -84,3 +84,38 @@ the HTML (using htmllib internally):
   unauthenticated principal [Login][1] (image)[2] Location:...[top][3] /
   Navigation
   Loading... ... Name Title Created Modified ...
+
+HTML/XML normalization
+======================
+
+The extended test browser allows normalized output of HTML and XML which makes
+testing examples with HTML or XML a bit easier when unimportant details like
+whitespace are changing:
+
+  >>> browser.open('http://localhost/funny.html')
+  >>> print browser.contents
+  <html>
+    <head>
+      <title>Foo</title>
+  </head>
+      <body>
+            <h1>
+        Title
+      </h1>
+          </body>
+              </html>
+  <BLANKLINE>
+
+versus
+
+  >>> print browser.normalized_contents
+  <html>
+    <head>
+      <title>Foo</title>
+    </head>
+    <body>
+      <h1>
+        Title
+      </h1>
+    </body>
+  </html>

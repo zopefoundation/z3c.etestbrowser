@@ -30,4 +30,11 @@
     permission="zope.View"
     />
 
+  <browser:page
+    name="funny.html"
+    for="*"
+    template="funny.pt"
+    permission="zope.View"
+    />
+
 </configure>

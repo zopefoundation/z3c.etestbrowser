@@ -4,3 +4,7 @@ CHANGES
 
 1.2 (unreleased)
 ----------------
+
+- Added `normalized_contents` attribute that reindents and normalizes the
+  etree structure of a document and allows easier to read HTML/XML examples in
+  doctests.

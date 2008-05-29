@@ -29,6 +29,22 @@ import zope.testbrowser.testing
 RE_CHARSET = re.compile('.*;charset=(.*)')
 
 
+def indent(elem, level=0):
+    i = "\n" + level*"  "
+    if len(elem):
+        if not elem.text or not elem.text.strip():
+            elem.text = i + "  "
+        for e in elem:
+            indent(e, level+1)
+            if not e.tail or not e.tail.strip():
+                e.tail = i + "  "
+        if not e.tail or not e.tail.strip():
+            e.tail = i
+    else:
+        if level and (not elem.tail or not elem.tail.strip()):
+            elem.tail = i
+
+
 class ExtendedTestBrowser(zope.testbrowser.testing.Browser):
     """An extended testbrowser implementation.
 
@@ -39,6 +55,7 @@ class ExtendedTestBrowser(zope.testbrowser.testing.Browser):
     """
 
     xml_strict = False
+    normalized_contents = ''
 
     _etree = None
 
@@ -68,6 +85,9 @@ class ExtendedTestBrowser(zope.testbrowser.testing.Browser):
     def _changed(self):
         super(ExtendedTestBrowser, self)._changed()
         self._etree = None
+        tree = self.etree
+        indent(tree)
+        self.normalized_contents = lxml.etree.tostring(tree, pretty_print=True)
 
     def pretty_print(self):
         """Print a pretty (formatted) version of the HTML content.

@@ -7,6 +7,6 @@ testbrowser. Especially those extensions that introduce dependencies to more
 external products, like lxml.
 
 Extension: lxml-support
------------------------
+=======================
 
 All HTML pages are parsed and provided as an element-tree.

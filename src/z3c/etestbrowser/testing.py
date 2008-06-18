@@ -55,9 +55,9 @@ class ExtendedTestBrowser(zope.testbrowser.testing.Browser):
     """
 
     xml_strict = False
-    normalized_contents = ''
 
     _etree = None
+    _normalized_contents = None
 
     @property
     def etree(self):
@@ -82,12 +82,18 @@ class ExtendedTestBrowser(zope.testbrowser.testing.Browser):
 
         return self._etree
 
+    @property
+    def normalized_contents(self):
+        if self._normalized_contents is None:
+            indent(self.etree)
+            self._normalized_contents = lxml.etree.tostring(self.etree,
+                                                            pretty_print=True)
+        return self._normalized_contents
+
     def _changed(self):
         super(ExtendedTestBrowser, self)._changed()
         self._etree = None
-        tree = self.etree
-        indent(tree)
-        self.normalized_contents = lxml.etree.tostring(tree, pretty_print=True)
+        self._normalized_contents = None
 
     def pretty_print(self):
         """Print a pretty (formatted) version of the HTML content.

@@ -1,8 +1,14 @@
-=======
 CHANGES
 =======
 
-1.2 (unreleased)
+1.2.1 (unreleased)
+------------------
+
+- Fixed bug with `normalized_contents` which would break the `open` function
+  of test browser if content wasn't parsable as HTML/XML.
+
+
+1.2 (2008-05-29)
 ----------------
 
 - Added `normalized_contents` attribute that reindents and normalizes the

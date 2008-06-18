@@ -64,6 +64,23 @@ contains a German umlaut:
   >>> browser.etree.xpath("//span")[0].text
   u'K\xfcgelblitz.'
 
+Invalid XML/HTML responses
+--------------------------
+
+Responses that contain a body with invalid XML/HTML will cause an error when
+accessing the etree or normalized_contents attribute, but will load fine for
+general TestBrowser use:
+
+  >>> browser.open("http://localhost/empty.html")
+  >>> browser.contents
+  ''
+  >>> browser.etree
+  Traceback (most recent call last):
+  XMLSyntaxError: ...
+  >>> browser.normalized_contents
+  Traceback (most recent call last):
+  XMLSyntaxError: ...
+
 
 Pretty printing
 ===============

@@ -37,4 +37,11 @@
     permission="zope.View"
     />
 
+  <browser:page
+    name="empty.html"
+    for="*"
+    template="empty.pt"
+    permission="zope.View"
+    />
+
 </configure>

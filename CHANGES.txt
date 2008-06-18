@@ -1,7 +1,10 @@
 CHANGES
 =======
 
-1.2.1 (unreleased)
+1.2.2 (unreleased)
+------------------
+
+1.2.1 (2008-06-18)
 ------------------
 
 - Fixed bug with `normalized_contents` which would break the `open` function

@@ -22,7 +22,7 @@ def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
 setup(name='z3c.etestbrowser',
-      version = '1.3dev',
+      version = '1.3.0',
       author='Christian Theune',
       author_email='ct@gocept.com',
       description='Extensions for zope.testbrowser',
@@ -52,7 +52,7 @@ setup(name='z3c.etestbrowser',
                                 'zope.app.securitypolicy',
                                 'zope.app.server']),
     install_requires=['setuptools',
-                      'lxml',
+                      'lxml>=2.2',
                       'zope.testbrowser'
                      ],
       include_package_data = True,

@@ -49,7 +49,7 @@ It is possible to force the test browser to use the xml parser::
   >>> browser.etree
   <Element {http://www.w3.org/1999/xhtml}html at ...>
   >>> browser.etree.xpath(
-  ...     '//html:body', {'html': 'http://www.w3.org/1999/xhtml'})
+  ...     '//html:body', namespaces={'html': 'http://www.w3.org/1999/xhtml'})
   [<Element {http://www.w3.org/1999/xhtml}body at ...>]
 
 LXML unicode support

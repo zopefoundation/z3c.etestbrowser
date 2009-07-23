@@ -21,7 +21,7 @@ import StringIO
 import htmllib
 import formatter
 
-import lxml.etree
+import lxml.etree, lxml.html
 
 import zope.testbrowser.testing
 
@@ -66,9 +66,11 @@ class ExtendedTestBrowser(zope.testbrowser.testing.Browser):
         # I'm not using any internal knowledge about testbrowser
         # here, to avoid breakage. Memory usage won't be a problem.
         if self.xml_strict:
-            self._etree = lxml.etree.XML(self.contents)
+            self._etree = lxml.etree.fromstring(
+                self.contents,
+                parser=lxml.etree.XMLParser(resolve_entities=False))
         else:
-            # This is a workaround against the broken fallback for 
+            # This is a workaround against the broken fallback for
             # encoding detection of libxml2.
             # We have a chance of knowing the encoding as Zope states this in
             # the content-type response header.
@@ -86,8 +88,8 @@ class ExtendedTestBrowser(zope.testbrowser.testing.Browser):
     def normalized_contents(self):
         if self._normalized_contents is None:
             indent(self.etree)
-            self._normalized_contents = lxml.etree.tostring(self.etree,
-                                                            pretty_print=True)
+            self._normalized_contents = lxml.etree.tostring(
+                self.etree, pretty_print=True)
         return self._normalized_contents
 
     def _changed(self):

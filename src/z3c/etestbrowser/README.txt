@@ -4,7 +4,7 @@ Extended testbrowser
 
 This package provides some extensions to Zope 3's testbrowser. It is intended
 for extensions that have dependencies that we do not want to rely on in the
-  Zope 3 core e.g. lxml.
+Zope 3 core e.g. lxml.
 
 
 Requirements
@@ -22,7 +22,7 @@ etree using lxml (if the content type is text/html or text/xml).
 This is useful to perform more detailed analysis of web pages using e.g. XPath
 and related XML technologies.
 
-Example::
+Example:
 
   >>> from z3c.etestbrowser.testing import ExtendedTestBrowser
   >>> browser = ExtendedTestBrowser()
@@ -40,7 +40,7 @@ Example::
 Strict XML
 ----------
 
-It is possible to force the test browser to use the xml parser::
+It is possible to force the test browser to use the xml parser:
 
   >>> browser.xml_strict
   False

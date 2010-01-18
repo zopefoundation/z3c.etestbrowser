@@ -29,6 +29,8 @@ setup(name='z3c.etestbrowser',
       long_description=(
           read('README.txt')
           + '\n\n' +
+          read('src', 'z3c', 'etestbrowser', 'README.txt')
+          + '\n\n' +
           read('CHANGES.txt')
           ),
       keywords = "zope3 testbrowser lxml",

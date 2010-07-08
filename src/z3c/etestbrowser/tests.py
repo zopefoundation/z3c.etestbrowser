@@ -16,11 +16,11 @@
 $Id$
 """
 
+import doctest
 import os.path
 import unittest
 
 from zope.app.testing import functional
-from zope.testing import doctest
 
 
 layer = functional.ZCMLLayer(

@@ -2,7 +2,7 @@
 CHANGES
 =======
 
-1.4.0 (unreleased)
+1.4.0 (2010-07-08)
 ==================
 
 - Took zope.securitypolicy refactoring and zope.testing.doctest deprecation

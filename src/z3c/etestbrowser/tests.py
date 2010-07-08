@@ -32,6 +32,7 @@ def test_suite():
     suite = unittest.TestSuite()
     test = functional.FunctionalDocFileSuite(
         "README.txt",
+        "over_the_wire.txt",
         optionflags=doctest.REPORT_NDIFF|doctest.NORMALIZE_WHITESPACE|
         doctest.ELLIPSIS)
     test.layer = layer

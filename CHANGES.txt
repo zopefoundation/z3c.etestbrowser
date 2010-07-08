@@ -2,11 +2,14 @@
 CHANGES
 =======
 
-1.3.2 (unreleased)
+1.4.0 (unreleased)
 ==================
 
 - Took zope.securitypolicy refactoring and zope.testing.doctest deprecation
   into account.
+
+- Added a variant of the ExtendedTestBrowser that speaks HTTP and has much
+  fewer dependencies than the existing one, which talks to the publisher.
 
 
 1.3.1 (2010-01-18)

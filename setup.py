@@ -11,10 +11,8 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
-"""Setup for z3c.viewlet package
+"""Setup for z3c.etestbrowser package."""
 
-$Id$
-"""
 import os
 from setuptools import setup, find_packages
 
@@ -30,6 +28,8 @@ setup(name='z3c.etestbrowser',
           read('README.txt')
           + '\n\n' +
           read('src', 'z3c', 'etestbrowser', 'README.txt')
+          + '\n\n' +
+          read('src', 'z3c', 'etestbrowser', 'wsgi.txt')
           + '\n\n' +
           read('src', 'z3c', 'etestbrowser', 'over_the_wire.txt')
           + '\n\n' +
@@ -59,7 +59,8 @@ setup(name='z3c.etestbrowser',
                                 ]),
     install_requires=['setuptools',
                       'lxml>=2.2',
-                      'zope.testbrowser'
+                      'zope.testbrowser',
+                      'zope.app.wsgi >= 3.8',
                      ],
       include_package_data = True,
       zip_safe = False,

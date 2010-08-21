@@ -1,0 +1,21 @@
+Extended testbrowser using zope.app.wsgi.testlayer
+--------------------------------------------------
+
+There is also a variant in ``z3c.etestbrowser.wsgi`` which can be used when
+the test layer was set up using ``zope.app.wsgi.testlayer`` instead of
+``zope.app.testing``:
+
+Example:
+
+  >>> import z3c.etestbrowser.wsgi
+  >>> browser = z3c.etestbrowser.wsgi.ExtendedTestBrowser()
+  >>> browser.open("http://localhost/")
+  >>> print browser.contents
+  <!DOCTYPE ...>
+  ...
+  </html>
+  >>> browser.etree
+  <Element html at ...>
+  >>> browser.etree.xpath('//body')
+  [<Element body at ...>]
+

@@ -16,20 +16,23 @@
 $Id$
 """
 
+from zope.app.testing import functional
 import doctest
 import os.path
 import unittest
-
-from zope.app.testing import functional
+import z3c.etestbrowser
+import zope.app.wsgi.testlayer
 
 
 layer = functional.ZCMLLayer(
     os.path.join(os.path.split(__file__)[0], 'ftesting.zcml'),
     __name__, 'ETestBrowserLayer')
 
+wsgi_layer = zope.app.wsgi.testlayer.BrowserLayer(z3c.etestbrowser)
 
 def test_suite():
     suite = unittest.TestSuite()
+
     test = functional.FunctionalDocFileSuite(
         "README.txt",
         "over_the_wire.txt",
@@ -37,4 +40,10 @@ def test_suite():
         doctest.ELLIPSIS)
     test.layer = layer
     suite.addTest(test)
+
+    wsgi_test = doctest.DocFileSuite(
+        "wsgi.txt",
+        optionflags=doctest.NORMALIZE_WHITESPACE|doctest.ELLIPSIS)
+    wsgi_test.layer = wsgi_layer
+    suite.addTest(wsgi_test)
     return suite

@@ -14,8 +14,9 @@ CHANGES
 - Took zope.securitypolicy refactoring and zope.testing.doctest deprecation
   into account.
 
-- Added a variant of the ExtendedTestBrowser that speaks HTTP and has much
-  fewer dependencies than the existing one, which talks to the publisher.
+- Added ``z3c.etestbrowser.browser.ExtendedTestBrowser``, a variant that
+  speaks HTTP instead of directly talking to teh publisher talks to the
+  publisher, see `Using testbrowser on the internet`_.
 
 
 1.3.1 (2010-01-18)

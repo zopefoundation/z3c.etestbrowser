@@ -1,6 +1,5 @@
-====================
 Extended testbrowser
-====================
+--------------------
 
 This package provides some extensions to Zope 3's testbrowser. It is intended
 for extensions that have dependencies that we do not want to rely on in the
@@ -8,13 +7,13 @@ Zope 3 core e.g. lxml.
 
 
 Requirements
-============
+~~~~~~~~~~~~
 
  - lxml
 
 
 etree support
-=============
+~~~~~~~~~~~~~
 
 The extended test browser allows parsing of the result of a request into an
 etree using lxml (if the content type is text/html or text/xml).
@@ -38,7 +37,7 @@ Example:
 
 
 Strict XML
-----------
+++++++++++
 
 It is possible to force the test browser to use the xml parser:
 
@@ -53,7 +52,7 @@ It is possible to force the test browser to use the xml parser:
   [<Element {http://www.w3.org/1999/xhtml}body at ...>]
 
 LXML unicode support
---------------------
+++++++++++++++++++++
 
 A couple of variations of libxml2 might interpret UTF-8 encoded strings
 incorrectly. We have a workaround for that. Let's have a look at a view that
@@ -65,7 +64,7 @@ contains a German umlaut:
   u'K\xfcgelblitz.'
 
 Invalid XML/HTML responses
---------------------------
+++++++++++++++++++++++++++
 
 Responses that contain a body with invalid XML/HTML will cause an error when
 accessing the etree or normalized_contents attribute, but will load fine for
@@ -83,7 +82,7 @@ general TestBrowser use:
 
 
 Pretty printing
-===============
+~~~~~~~~~~~~~~~
 
 Sometimes a normal `print` of the browsers contents is hard to read for
 debugging:
@@ -103,7 +102,7 @@ the HTML (using htmllib internally):
   Loading... ... Name Title Created Modified ...
 
 HTML/XML normalization
-======================
+~~~~~~~~~~~~~~~~~~~~~~
 
 The extended test browser allows normalized output of HTML and XML which makes
 testing examples with HTML or XML a bit easier when unimportant details like

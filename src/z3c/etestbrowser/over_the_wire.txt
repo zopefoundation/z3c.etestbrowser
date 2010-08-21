@@ -1,9 +1,8 @@
-=================================
-Using testbrowser On the Internet
-=================================
+Using testbrowser on the internet
+---------------------------------
 
-The ``z3c.etestbrowser`` module exposes an ``ExtendedTestBrowser`` class that
-simulates a web browser similar to Mozilla Firefox or IE.
+The ``z3c.etestbrowser.browser`` module exposes an ``ExtendedTestBrowser``
+class that simulates a web browser similar to Mozilla Firefox or IE.
 
     >>> from z3c.etestbrowser.browser import ExtendedTestBrowser
     >>> browser = ExtendedTestBrowser()

@@ -14,11 +14,11 @@ CHANGES
 1.4.0 (2010-07-08)
 ==================
 
-- Took zope.securitypolicy refactoring and zope.testing.doctest deprecation
-  into account.
+- Took ``zope.securitypolicy`` refactoring and ``zope.testing.doctest``
+  deprecation into account.
 
 - Added ``z3c.etestbrowser.browser.ExtendedTestBrowser``, a variant that
-  speaks HTTP instead of directly talking to teh publisher talks to the
+  speaks HTTP instead of directly talking to the publisher talks to the
   publisher, see `Using testbrowser on the internet`_.
 
 

@@ -11,16 +11,16 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
-"""z3c.etestbrowser for zope.app.wsgi.testlayer."""
+"""z3c.etestbrowser for zope.testbrowser.wsgi."""
 
 import z3c.etestbrowser.browser
-import zope.app.wsgi.testlayer
+import zope.testbrowser.wsgi
 
 
-class ExtendedTestBrowser(zope.app.wsgi.testlayer.Browser,
+class ExtendedTestBrowser(zope.testbrowser.wsgi.Browser,
                           z3c.etestbrowser.browser.ExtendedTestBrowser):
     """An extended testbrowser implementation.
 
-    Based on zope.app.wsgi.testlayer.Browser.
+    Based on zope.testbrowser.wsgi.Browser.
 
     """

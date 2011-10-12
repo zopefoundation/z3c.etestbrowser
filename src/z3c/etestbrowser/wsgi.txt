@@ -1,9 +1,8 @@
-Extended testbrowser using zope.app.wsgi.testlayer
---------------------------------------------------
+Extended testbrowser for zope.testbrowser.wsgi
+----------------------------------------------
 
-There is also a variant in ``z3c.etestbrowser.wsgi`` which can be used when
-the test layer was set up using ``zope.app.wsgi.testlayer`` instead of
-``zope.app.testing``:
+There is also a variant in ``z3c.etestbrowser.wsgi`` which can be used for
+the WSGI variant of ``zope.testbrowser``.
 
 Example:
 

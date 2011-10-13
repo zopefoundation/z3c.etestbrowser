@@ -12,7 +12,7 @@ CHANGES
 ==================
 
 - No longer depending on ``zope.app.wsgi`` but on ``zope.testbrowser`` >= 4.0
- for the WSGI flavor of testbrowser.
+  for the WSGI flavor of testbrowser.
 
 - Added a `zope.app.testing` extra. You should use this extra if you want to
   use the browser in ``z3c.etestbrowser.testing``. (The base testbrowser used
@@ -28,8 +28,8 @@ CHANGES
 
 - Added ``z3c.etestbrowser.wsgi.ExtendedTestBrowser``, a variant that can be
   used when the test layer was set up using ``using
-  zope.app.wsgi.testlayer``. see `Extended testbrowser using
-  zope.app.wsgi.testlayer`_.
+  zope.app.wsgi.testlayer``. see
+  `Extended testbrowser for zope.testbrowser.wsgi`_.
 
 
 1.4.0 (2010-07-08)

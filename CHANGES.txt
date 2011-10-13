@@ -2,7 +2,7 @@
 CHANGES
 =======
 
-1.5.1 (unreleased)
+2.0.0 (unreleased)
 ==================
 
 - No longer depending on ``zope.app.wsgi`` but on ``zope.testbrowser`` >= 4.0
@@ -12,6 +12,10 @@ CHANGES
   use the browser in ``z3c.etestbrowser.testing``. (The base testbrowser used
   there has been moved from ``zope.testbrowser`` to ``zope.app.testing`` in
   version 4.0.)
+
+- Renamed ``z3c.etestbrowser.wsgi.ExtendedTestBrowser`` to ``Browser`` for
+  equality with ``zope.testbrowser`` but kept ``ExtendedTestBrowser`` for
+  backwards compatibility.
 
 1.5.0 (2010-08-22)
 ==================

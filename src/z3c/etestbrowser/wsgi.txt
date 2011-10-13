@@ -7,7 +7,7 @@ the WSGI variant of ``zope.testbrowser``.
 Example:
 
   >>> import z3c.etestbrowser.wsgi
-  >>> browser = z3c.etestbrowser.wsgi.ExtendedTestBrowser()
+  >>> browser = z3c.etestbrowser.wsgi.Browser()
   >>> browser.open("http://localhost/")
   >>> print browser.contents
   <!DOCTYPE ...>

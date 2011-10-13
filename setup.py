@@ -20,7 +20,7 @@ def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
 setup(name='z3c.etestbrowser',
-      version='1.5.1dev',
+      version='2.0.0',
       author='Christian Theune',
       author_email='ct@gocept.com',
       description='Extensions for zope.testbrowser',

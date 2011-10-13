@@ -2,7 +2,7 @@
 CHANGES
 =======
 
-2.0.0 (unreleased)
+2.0.0 (2011-10-13)
 ==================
 
 - No longer depending on ``zope.app.wsgi`` but on ``zope.testbrowser`` >= 4.0

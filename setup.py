@@ -14,10 +14,22 @@
 """Setup for z3c.etestbrowser package."""
 
 import os
+import ConfigParser
 from setuptools import setup, find_packages
 
+def here(*rnames):
+    return os.path.join(os.path.dirname(__file__), *rnames)
+
 def read(*rnames):
-    return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
+    with open(here(*rnames)) as f:
+        return f.read()
+
+def get_test_requires():
+    parser = ConfigParser.ConfigParser()
+    parser.read([here('tox.ini')])
+    return parser.get('testenv', 'deps')
+
+test_requires = get_test_requires()
 
 setup(name='z3c.etestbrowser',
       version='2.0.1dev',
@@ -34,35 +46,37 @@ setup(name='z3c.etestbrowser',
           read('src', 'z3c', 'etestbrowser', 'over_the_wire.txt')
           + '\n\n' +
           read('CHANGES.txt')
-          ),
-      keywords = "zope3 testbrowser lxml",
-      classifiers = [
+      ),
+      keywords="zope3 testbrowser lxml",
+      classifiers=[
           'Development Status :: 5 - Production/Stable',
           'Environment :: Web Environment',
           'Intended Audience :: Developers',
           'License :: OSI Approved :: Zope Public License',
           'Programming Language :: Python',
+          'Programming Language :: Python :: 2.6',
+          'Programming Language :: Python :: 2.7',
           'Natural Language :: English',
           'Operating System :: OS Independent',
           'Topic :: Internet :: WWW/HTTP',
-          'Framework :: Zope3'],
+          'Framework :: Zope3',
+      ],
       url='http://pypi.python.org/pypi/z3c.etestbrowser',
       license='ZPL 2.1',
       packages=find_packages('src'),
-      package_dir = {'': 'src'},
+      package_dir={'': 'src'},
       namespace_packages=['z3c'],
-      extras_require={"test":['zope.app.testing',
-                              'zope.app.wsgi >= 3.8',
-                              'zope.app.zcmlfiles',
-                              'zope.app.server',
-                              'zope.testbrowser[test]',
-                             ],
-                      "zope.app.testing": ["zope.app.testing"],
-                      },
-    install_requires=['setuptools',
-                      'lxml>=2.2',
-                      'zope.testbrowser >= 4.0',
-                     ],
-      include_package_data = True,
-      zip_safe = False,
-      )
+      test_suite='z3c.etestbrowser.tests.test_suite',
+      tests_require=test_requires,
+      extras_require={
+          "test": test_requires,
+          "zope.app.testing": ["zope.app.testing"],
+      },
+      install_requires=[
+          'setuptools',
+          'lxml >= 2.2',
+          'zope.testbrowser >= 4.0',
+      ],
+      include_package_data=True,
+      zip_safe=False,
+     )

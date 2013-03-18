@@ -26,7 +26,7 @@ import zope.app.wsgi.testlayer
 
 layer = functional.ZCMLLayer(
     os.path.join(os.path.split(__file__)[0], 'ftesting.zcml'),
-    __name__, 'ETestBrowserLayer')
+    __name__, 'ETestBrowserLayer', allow_teardown=True)
 
 wsgi_layer = zope.app.wsgi.testlayer.BrowserLayer(z3c.etestbrowser)
 

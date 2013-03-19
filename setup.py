@@ -32,7 +32,7 @@ def get_test_requires():
 test_requires = get_test_requires()
 
 setup(name='z3c.etestbrowser',
-      version='2.0.1dev',
+      version='3.0.0dev',
       author='Christian Theune',
       author_email='ct@gocept.com',
       description='Extensions for zope.testbrowser',
@@ -61,7 +61,7 @@ setup(name='z3c.etestbrowser',
           'Topic :: Internet :: WWW/HTTP',
           'Framework :: Zope3',
       ],
-      url='http://pypi.python.org/pypi/z3c.etestbrowser',
+      url='https://github.com/zopefoundation/z3c.etestbrowser',
       license='ZPL 2.1',
       packages=find_packages('src'),
       package_dir={'': 'src'},

@@ -18,7 +18,7 @@ import zope.testbrowser.wsgi
 
 
 class Browser(zope.testbrowser.wsgi.Browser,
-                          z3c.etestbrowser.browser.ExtendedTestBrowser):
+              z3c.etestbrowser.browser.ExtendedTestBrowser):
     """An extended testbrowser implementation.
 
     Based on zope.testbrowser.wsgi.Browser.

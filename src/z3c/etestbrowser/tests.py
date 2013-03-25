@@ -16,38 +16,56 @@
 $Id$
 """
 
-from zope.app.testing import functional
 import doctest
-import os.path
+import re
 import unittest
+
 import z3c.etestbrowser
 import zope.app.wsgi.testlayer
+import zope.testing.renormalizing
+
+try:
+    ascii
+except NameError:
+    # Python 2
+    ascii = repr
 
 
-layer = functional.ZCMLLayer(
-    os.path.join(os.path.split(__file__)[0], 'ftesting.zcml'),
-    __name__, 'ETestBrowserLayer', allow_teardown=True)
+try:
+    unichr
+except NameError:
+    # Python 3
+    unichr = chr
 
-wsgi_layer = zope.app.wsgi.testlayer.BrowserLayer(z3c.etestbrowser, allowTearDown=True)
+
+checker = zope.testing.renormalizing.OutputChecker([
+    # Python 3 prints uncode reprs differently
+    (re.compile(r"\bu('[^']*')"), r'\1'),
+    # Python 3 prints fully-qualified dotted names for exceptions
+    (re.compile(r'lxml\.etree\.(XMLSyntaxError:)'), r'\1'),
+    (re.compile(r'zope\.testbrowser\.browser\.(RobotExclusionError:)'), r'\1'),
+    # Python 2's formatter treat NBSP as printable characters,
+    # Python 3's formatter treats NBSP as a space and normalizes it
+    (re.compile(unichr(0xA0)), r' '),
+])
+
+
+wsgi_layer = zope.app.wsgi.testlayer.BrowserLayer(z3c.etestbrowser,
+                                                  allowTearDown=True)
+
 
 def setUpWSGI(test):
     test.globs['wsgi_app'] = wsgi_layer.make_wsgi_app()
+    test.globs['ascii'] = ascii
 
 
 def test_suite():
     suite = unittest.TestSuite()
-
-    test = functional.FunctionalDocFileSuite(
+    wsgi_test = doctest.DocFileSuite(
         "README.txt",
         "over_the_wire.txt",
-        optionflags=doctest.REPORT_NDIFF|doctest.NORMALIZE_WHITESPACE|
-        doctest.ELLIPSIS)
-    test.layer = layer
-    suite.addTest(test)
-
-    wsgi_test = doctest.DocFileSuite(
-        "wsgi.txt",
         setUp=setUpWSGI,
+        checker=checker,
         optionflags=doctest.NORMALIZE_WHITESPACE|doctest.ELLIPSIS)
     wsgi_test.layer = wsgi_layer
     suite.addTest(wsgi_test)

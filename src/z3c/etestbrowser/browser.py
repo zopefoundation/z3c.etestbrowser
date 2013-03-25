@@ -11,19 +11,21 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
-"""Extensions for z3c.etestbrowser
+"""Extensions for z3c.etestbrowser"""
 
-$Id$
-"""
-
-import re
-import htmllib
 import formatter
+import re
 
 import lxml.etree
 import lxml.html
 
 import zope.testbrowser.browser
+
+try:
+    from htmllib import HTMLParser
+except ImportError:
+    # Python 3
+    from ._prettyprint import HTMLParser
 
 
 RE_CHARSET = re.compile('.*;charset=(.*)')
@@ -70,16 +72,13 @@ class ExtendedTestBrowser(zope.testbrowser.browser.Browser):
                 self.contents,
                 parser=lxml.etree.XMLParser(resolve_entities=False))
         else:
-            # This is a workaround against the broken fallback for
-            # encoding detection of libxml2.
-            # We have a chance of knowing the encoding as Zope states this in
-            # the content-type response header.
             content = self.contents
-            content_type = self.headers['content-type']
-            match = RE_CHARSET.match(content_type)
-            if match is not None:
-                charset = match.groups()[0]
-                content = content.decode(charset)
+            if isinstance(content, bytes):
+                content_type = self.headers['content-type']
+                match = RE_CHARSET.match(content_type)
+                if match is not None:
+                    charset = match.groups()[0].strip('"' + "'")
+                    content = content.decode(charset)
             self._etree = lxml.etree.HTML(content)
 
         return self._etree
@@ -89,7 +88,7 @@ class ExtendedTestBrowser(zope.testbrowser.browser.Browser):
         if self._normalized_contents is None:
             indent(self.etree)
             self._normalized_contents = lxml.etree.tostring(
-                self.etree, pretty_print=True)
+                self.etree, pretty_print=True).decode('UTF-8')
         return self._normalized_contents
 
     def _changed(self):
@@ -103,9 +102,9 @@ class ExtendedTestBrowser(zope.testbrowser.browser.Browser):
         If the content is not text/html then it is just printed.
         """
         if not self.headers['content-type'].lower().startswith('text/html'):
-            print self.contents
+            print(self.contents)
         else:
-            parser = htmllib.HTMLParser(
+            parser = HTMLParser(
                 formatter.AbstractFormatter(formatter.DumbWriter()))
             parser.feed(self.contents)
             parser.close()

@@ -14,8 +14,13 @@
 """Setup for z3c.etestbrowser package."""
 
 import os
-import ConfigParser
 from setuptools import setup, find_packages
+
+try:
+    from ConfigParser import ConfigParser
+except ImportError:
+    # Python 3.x
+    from configparser import ConfigParser
 
 def here(*rnames):
     return os.path.join(os.path.dirname(__file__), *rnames)
@@ -25,7 +30,7 @@ def read(*rnames):
         return f.read()
 
 def get_test_requires():
-    parser = ConfigParser.ConfigParser()
+    parser = ConfigParser()
     parser.read([here('tox.ini')])
     return parser.get('testenv', 'deps')
 
@@ -41,8 +46,6 @@ setup(name='z3c.etestbrowser',
           + '\n\n' +
           read('src', 'z3c', 'etestbrowser', 'README.txt')
           + '\n\n' +
-          read('src', 'z3c', 'etestbrowser', 'wsgi.txt')
-          + '\n\n' +
           read('src', 'z3c', 'etestbrowser', 'over_the_wire.txt')
           + '\n\n' +
           read('CHANGES.txt')
@@ -56,6 +59,7 @@ setup(name='z3c.etestbrowser',
           'Programming Language :: Python',
           'Programming Language :: Python :: 2.6',
           'Programming Language :: Python :: 2.7',
+          'Programming Language :: Python :: 3.3',
           'Natural Language :: English',
           'Operating System :: OS Independent',
           'Topic :: Internet :: WWW/HTTP',

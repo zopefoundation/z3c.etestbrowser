@@ -5,7 +5,14 @@ CHANGES
 3.0.0 (unreleased)
 ==================
 
-- Nothing changed yet.
+- Added support for Python 3.3.  At least for ``z3c.etestbrowser.wsgi``
+  and ``z3c.etestbrowser.browser``.  ``z3c.etestbrowser.testing`` also
+  supports Python 3 by itself, but it depends on ``zope.app.testing``, which
+  doesn't.
+
+- Backwards compatibility note: ``ExtendedTestBrowser.pretty_print()`` now
+  considers ``&nbsp;`` to be a whitespace character and collapses it into a
+  simple space.
 
 
 2.0.0 (2011-10-13)
@@ -22,6 +29,7 @@ CHANGES
 - Renamed ``z3c.etestbrowser.wsgi.ExtendedTestBrowser`` to ``Browser`` for
   equality with ``zope.testbrowser`` but kept ``ExtendedTestBrowser`` for
   backwards compatibility.
+
 
 1.5.0 (2010-08-22)
 ==================
@@ -48,6 +56,7 @@ CHANGES
 
 - Added doctest to `long_description` to show up on pypi.
 
+
 1.3.0 (2009-07-23)
 ==================
 
@@ -55,6 +64,7 @@ CHANGES
 
 - Fixed bug with `normalized_contents` which would break the `open` function
   of test browser if content wasn't parsable as HTML/XML.
+
 
 1.2.0 (2008-05-29)
 ==================

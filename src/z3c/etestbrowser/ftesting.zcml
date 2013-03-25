@@ -1,15 +1,28 @@
-<configure xmlns="http://namespaces.zope.org/zope"
-  xmlns:browser="http://namespaces.zope.org/browser"
-  i18n_domain="zope">
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="zope">
 
-  <include package="zope.app.zcmlfiles" file="meta.zcml"/>
-  <include package="zope.app.zcmlfiles" />
+  <include package="zope.component" file="meta.zcml" />
+  <include package="zope.security" file="meta.zcml" />
+  <include package="zope.publisher" file="meta.zcml" />
+  <include package="zope.principalregistry" file="meta.zcml" />
+  <include package="zope.browserpage" file="meta.zcml" />
+  <include package="zope.app.publication" file="meta.zcml" />
 
-  <!-- Include Zope dependencies here -->
-  <include package="zope.publisher"/>
-  <include package="zope.traversing"/>
-  <include package="zope.traversing.browser"/>
-  <include package="zope.app.server"/>
+  <include package="zope.app.appsetup" />
+  <include package="zope.app.publication" />
+  <include package="zope.annotation" />
+  <include package="zope.authentication" />
+  <include package="zope.component" />
+  <include package="zope.container" />
+  <include package="zope.location" />
+  <include package="zope.principalregistry" />
+  <include package="zope.publisher" />
+  <include package="zope.security" />
+  <include package="zope.site" />
+  <include package="zope.traversing" />
+  <include package="zope.traversing.browser" />
 
   <include package="zope.securitypolicy" file="meta.zcml"/>
   <include package="zope.securitypolicy" />
@@ -17,31 +30,42 @@
   <securityPolicy
       component="zope.securitypolicy.zopepolicy.ZopeSecurityPolicy" />
 
-  <role id="zope.Anonymous" title="Everybody"
-                 description="All users have this role implicitly" />
+  <role
+      id="zope.Anonymous" title="Everybody"
+      description="All users have this role implicitly" />
 
-  <grant permission="zope.View"
-    role="zope.Anonymous" />
+  <grant
+      permission="zope.View"
+      role="zope.Anonymous" />
 
-  <browser:page
-    name="lxml.html"
-    for="*"
-    template="lxml.pt"
-    permission="zope.View"
-    />
+  <browser:defaultView name="index.html" />
 
   <browser:page
-    name="funny.html"
-    for="*"
-    template="funny.pt"
-    permission="zope.View"
-    />
+      name="index.html"
+      for="*"
+      template="fake_index.pt"
+      permission="zope.View"
+      />
 
   <browser:page
-    name="empty.html"
-    for="*"
-    template="empty.pt"
-    permission="zope.View"
-    />
+      name="lxml.html"
+      for="*"
+      template="lxml.pt"
+      permission="zope.View"
+      />
+
+  <browser:page
+      name="funny.html"
+      for="*"
+      template="funny.pt"
+      permission="zope.View"
+      />
+
+  <browser:page
+      name="empty.html"
+      for="*"
+      template="empty.pt"
+      permission="zope.View"
+      />
 
 </configure>

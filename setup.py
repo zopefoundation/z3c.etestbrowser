@@ -32,7 +32,7 @@ def get_test_requires():
 test_requires = get_test_requires()
 
 setup(name='z3c.etestbrowser',
-      version='3.0.0dev',
+      version='2.0.1',
       author='Christian Theune',
       author_email='ct@gocept.com',
       description='Extensions for zope.testbrowser',

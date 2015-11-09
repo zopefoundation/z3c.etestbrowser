@@ -2,7 +2,7 @@
 CHANGES
 =======
 
-2.0.1 (unreleased)
+2.0.1 (2015-11-09)
 ==================
 
 - Fix `over_the_wire.txt`

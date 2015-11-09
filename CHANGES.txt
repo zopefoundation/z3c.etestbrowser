@@ -2,10 +2,10 @@
 CHANGES
 =======
 
-3.0.0 (unreleased)
+2.0.1 (unreleased)
 ==================
 
-- Nothing changed yet.
+- Fix `over_the_wire.txt`
 
 
 2.0.0 (2011-10-13)

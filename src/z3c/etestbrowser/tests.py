@@ -28,7 +28,9 @@ layer = functional.ZCMLLayer(
     os.path.join(os.path.split(__file__)[0], 'ftesting.zcml'),
     __name__, 'ETestBrowserLayer', allow_teardown=True)
 
-wsgi_layer = zope.app.wsgi.testlayer.BrowserLayer(z3c.etestbrowser, allowTearDown=True)
+wsgi_layer = zope.app.wsgi.testlayer.BrowserLayer(
+    z3c.etestbrowser, allowTearDown=True)
+
 
 def setUpWSGI(test):
     test.globs['wsgi_app'] = wsgi_layer.make_wsgi_app()
@@ -48,7 +50,7 @@ def test_suite():
     wsgi_test = doctest.DocFileSuite(
         "wsgi.txt",
         setUp=setUpWSGI,
-        optionflags=doctest.NORMALIZE_WHITESPACE|doctest.ELLIPSIS)
+        optionflags=doctest.NORMALIZE_WHITESPACE | doctest.ELLIPSIS)
     wsgi_test.layer = wsgi_layer
     suite.addTest(wsgi_test)
     return suite

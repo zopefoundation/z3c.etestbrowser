@@ -1,13 +1,10 @@
-sudo: false
-cache:
-  directories:
-    - .tox
+# Configuration script to Travis-CI
 language: python
-env:
-    - TOXENV=py27
+python:
+    - 2.7
 install:
-    - travis_retry pip install tox
+    - pip install tox
 script:
-    - tox
+    - tox -e py${TRAVIS_PYTHON_VERSION//[.]/}
 notifications:
     email: false

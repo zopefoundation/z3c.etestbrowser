@@ -19,7 +19,6 @@ $Id$
 from zope.app.testing import functional
 import doctest
 import os.path
-import sys
 import unittest
 import z3c.etestbrowser
 import zope.app.wsgi.testlayer
@@ -38,16 +37,13 @@ def setUpWSGI(test):
 def test_suite():
     suite = unittest.TestSuite()
 
-    if sys.version_info[:2] != (2, 6):
-        # py26 testbrowser CAN open http://google.com/ncr, but py27 can't
-        # disable the test for py26
-        test = functional.FunctionalDocFileSuite(
-            "README.txt",
-            "over_the_wire.txt",
-            optionflags=doctest.REPORT_NDIFF|doctest.NORMALIZE_WHITESPACE|
-            doctest.ELLIPSIS)
-        test.layer = layer
-        suite.addTest(test)
+    test = functional.FunctionalDocFileSuite(
+        "README.txt",
+        "over_the_wire.txt",
+        optionflags=doctest.REPORT_NDIFF | doctest.NORMALIZE_WHITESPACE |
+        doctest.ELLIPSIS)
+    test.layer = layer
+    suite.addTest(test)
 
     wsgi_test = doctest.DocFileSuite(
         "wsgi.txt",

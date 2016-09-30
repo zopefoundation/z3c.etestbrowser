@@ -1,4 +1,7 @@
 .installed.cfg
+.Python
+include/
+lib/
 bin/
 develop-eggs/
 eggs/

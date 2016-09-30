@@ -76,4 +76,5 @@ setup(name='z3c.etestbrowser',
           'zope.testbrowser >= 4.0, < 5.0',
       ],
       include_package_data=True,
-      zip_safe=False,)
+      zip_safe=False,
+      )

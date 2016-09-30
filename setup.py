@@ -17,12 +17,15 @@ import os
 import ConfigParser
 from setuptools import setup, find_packages
 
+
 def here(*rnames):
     return os.path.join(os.path.dirname(__file__), *rnames)
+
 
 def read(*rnames):
     with open(here(*rnames)) as f:
         return f.read()
+
 
 def get_test_requires():
     parser = ConfigParser.ConfigParser()
@@ -37,14 +40,10 @@ setup(name='z3c.etestbrowser',
       author_email='ct@gocept.com',
       description='Extensions for zope.testbrowser',
       long_description=(
-          read('README.txt')
-          + '\n\n' +
-          read('src', 'z3c', 'etestbrowser', 'README.txt')
-          + '\n\n' +
-          read('src', 'z3c', 'etestbrowser', 'wsgi.txt')
-          + '\n\n' +
-          read('src', 'z3c', 'etestbrowser', 'over_the_wire.txt')
-          + '\n\n' +
+          read('README.txt') + '\n\n' +
+          read('src', 'z3c', 'etestbrowser', 'README.txt') + '\n\n' +
+          read('src', 'z3c', 'etestbrowser', 'wsgi.txt') + '\n\n' +
+          read('src', 'z3c', 'etestbrowser', 'over_the_wire.txt') + '\n\n' +
           read('CHANGES.txt')
       ),
       keywords="zope3 testbrowser lxml",
@@ -77,5 +76,4 @@ setup(name='z3c.etestbrowser',
           'zope.testbrowser >= 4.0, < 5.0',
       ],
       include_package_data=True,
-      zip_safe=False,
-     )
+      zip_safe=False,)

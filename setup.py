@@ -75,7 +75,7 @@ setup(name='z3c.etestbrowser',
       install_requires=[
           'setuptools',
           'lxml >= 2.2',
-          'zope.testbrowser >= 4.0',
+          'zope.testbrowser >= 4.0, < 5.0',
       ],
       include_package_data=True,
       zip_safe=False,

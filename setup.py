@@ -28,7 +28,7 @@ def read(*rnames):
 
 
 def get_test_requires():
-    parser = ConfigParser.ConfigParser()
+    parser = ConfigParser()
     parser.read([here('tox.ini')])
     return parser.get('testenv', 'deps')
 

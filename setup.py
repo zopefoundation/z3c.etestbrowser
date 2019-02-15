@@ -14,7 +14,7 @@
 """Setup for z3c.etestbrowser package."""
 
 import os
-import ConfigParser
+from configparser import ConfigParser
 from setuptools import setup, find_packages
 
 
@@ -72,6 +72,7 @@ setup(name='z3c.etestbrowser',
       },
       install_requires=[
           'setuptools',
+          'configparser',
           'lxml >= 2.2',
           'zope.testbrowser >= 4.0, < 5.0',
       ],

@@ -2,10 +2,12 @@
 CHANGES
 =======
 
-2.0.2 (unreleased)
-==================
+2.1 (unreleased)
+================
 
-- Nothing changed yet.
+- Adapt the code to newer ``lxml`` versions which no longer raise an exception
+  if the string to be parsed by ``lxml.etree`` is empty. We now raise a
+  ``ValueError`` in this case.
 
 
 2.0.1 (2015-11-09)

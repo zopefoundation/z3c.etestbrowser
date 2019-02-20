@@ -14,30 +14,27 @@
 """Setup for z3c.etestbrowser package."""
 
 import os
-import ConfigParser
 from setuptools import setup, find_packages
 
 
-def here(*rnames):
-    return os.path.join(os.path.dirname(__file__), *rnames)
-
-
 def read(*rnames):
-    with open(here(*rnames)) as f:
+    with open(os.path.join(*rnames)) as f:
         return f.read()
 
 
-def get_test_requires():
-    parser = ConfigParser.ConfigParser()
-    parser.read([here('tox.ini')])
-    return parser.get('testenv', 'deps')
-
-test_requires = get_test_requires()
+test_requires = [
+    'zope.testrunner',
+    'zope.app.testing < 4',
+    'zope.app.wsgi[testlayer] >= 4.0dev',
+    'zope.app.zcmlfiles',
+    'zope.app.server',
+    'zope.testbrowser[test]',
+]
 
 setup(name='z3c.etestbrowser',
-      version='2.0.2.dev0',
+      version='2.1.dev0',
       author='Christian Theune',
-      author_email='ct@gocept.com',
+      author_email='mail@gocept.com',
       description='Extensions for zope.testbrowser',
       long_description=(
           read('README.txt') + '\n\n' +
@@ -68,7 +65,7 @@ setup(name='z3c.etestbrowser',
       tests_require=test_requires,
       extras_require={
           "test": test_requires,
-          "zope.app.testing": ["zope.app.testing"],
+          "zope.app.testing": ["zope.app.testing < 4.0"],
       },
       install_requires=[
           'setuptools',

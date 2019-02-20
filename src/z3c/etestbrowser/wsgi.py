@@ -25,5 +25,6 @@ class Browser(zope.testbrowser.wsgi.Browser,
 
     """
 
+
 # Just for backwards compatibility with versions before 2.0:
 ExtendedTestBrowser = Browser

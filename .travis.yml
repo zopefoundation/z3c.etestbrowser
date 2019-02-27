@@ -1,15 +1,17 @@
 # Configuration script for Travis-CI
 language: python
+dist: xenial
 python:
   - 2.7
+  - 3.6
+  - 3.7
+  - 3.8
 matrix:
   include:
     - python: 2.7
-      name: "2.7"
-    - python: 2.7
       name: "Flake8"
       install:  pip install -U flake8
-      script: flake8 --doctests src setup.py
+      script: flake8 src setup.py
       after_success:
 install:
   - pip install -U pip setuptools zope.testrunner

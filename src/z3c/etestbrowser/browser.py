@@ -82,6 +82,9 @@ class ExtendedTestBrowser(zope.testbrowser.browser.Browser):
                 content = content.decode(charset)
             self._etree = lxml.etree.HTML(content)
 
+        if self._etree is None:
+            raise ValueError(
+                'ETree could not be constructed. Contents might be empty.')
         return self._etree
 
     @property

@@ -1,11 +1,24 @@
-# Configuration script to Travis-CI
-sudo: false
+# Configuration script for Travis-CI
 language: python
 python:
-    - 2.7
+  - 2.7
+matrix:
+  include:
+    - python: 2.7
+      name: "2.7"
+    - python: 2.7
+      name: "Flake8"
+      install:  pip install -U flake8
+      script: flake8 --doctests src setup.py
+      after_success:
 install:
-    - pip install tox-travis
+  - pip install -U pip setuptools zope.testrunner
+  - pip install -U coveralls coverage
+  - pip install -U -e ".[test]"
 script:
-    - tox
+  - coverage run -m zope.testrunner --test-path=src --auto-color
+after_success:
+  - coveralls
 notifications:
-    email: false
+  email: false
+cache: pip

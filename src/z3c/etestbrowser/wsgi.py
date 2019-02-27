@@ -11,20 +11,12 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
-"""z3c.etestbrowser for zope.testbrowser.wsgi."""
+import zope.deferredimport
+zope.deferredimport.initialize()
 
-import z3c.etestbrowser.browser
-import zope.testbrowser.wsgi
-
-
-class Browser(zope.testbrowser.wsgi.Browser,
-              z3c.etestbrowser.browser.ExtendedTestBrowser):
-    """An extended testbrowser implementation.
-
-    Based on zope.testbrowser.wsgi.Browser.
-
-    """
-
-
-# Just for backwards compatibility with versions before 2.0:
-ExtendedTestBrowser = Browser
+zope.deferredimport.deprecated(
+    "z3c.etestbrowser.testing.ExtendedTestBrowser now speaks WSGI, so please "
+    "use it. This BBB import will go away in Version 4.0.",
+    Browser='z3c.etestbrowser:testing.ExtendedTestBrowser',
+    ExtendedTestBrowser='z3c.etestbrowser:testing.ExtendedTestBrowser',
+)

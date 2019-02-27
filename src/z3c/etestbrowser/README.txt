@@ -1,9 +1,8 @@
 Extended testbrowser
 --------------------
 
-This package provides some extensions to Zope 3's testbrowser. It is intended
-for extensions that have dependencies that we do not want to rely on in the
-Zope 3 core e.g. lxml.
+This package provides some extensions to ``zope.testbrowser``.  These are not
+included in the core because they have extra dependencies, such as ``lxml``.
 
 
 Requirements

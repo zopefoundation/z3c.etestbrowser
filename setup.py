@@ -23,11 +23,24 @@ def read(*rnames):
 
 
 test_requires = [
-    'zope.testrunner',
+    'zope.annotation',
+    'zope.app.appsetup',
+    'zope.app.publication',
     'zope.app.wsgi[testlayer] >= 4.0dev',
-    'zope.app.zcmlfiles',
-    'zope.app.server',
+    'zope.authentication',
+    'zope.browserpage',
+    'zope.component',
+    'zope.container',
+    'zope.location',
+    'zope.principalregistry',
+    'zope.publisher',
+    'zope.security',
+    'zope.securitypolicy',
+    'zope.site',
     'zope.testbrowser[test]',
+    'zope.testing',
+    'zope.testrunner',
+    'zope.traversing',
 ]
 
 setup(name='z3c.etestbrowser',

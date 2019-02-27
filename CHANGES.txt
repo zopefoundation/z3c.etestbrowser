@@ -27,7 +27,7 @@ Backwards incompatible changes
 Features
 --------
 
-- Add support for Python 3.6 up to 3.8.
+- Add support for Python 3.6 up to 3.7.
 
 
 2.0.1 (2015-11-09)

@@ -84,7 +84,7 @@ class ExtendedTestBrowser(zope.testbrowser.browser.Browser):
 
         if self._etree is None:
             raise ValueError(
-                'ETree could not be constructed. Contents might be emtpy.')
+                'ETree could not be constructed. Contents might be empty.')
         return self._etree
 
     @property

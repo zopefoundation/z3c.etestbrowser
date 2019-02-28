@@ -4,6 +4,8 @@ source = z3c.etestbrowser
 
 [report]
 precision = 2
+exclude_lines =
+    pragma: no cover
 
 [html]
 directory = htmlcov

@@ -16,7 +16,7 @@ zope.deferredimport.initialize()
 
 zope.deferredimport.deprecated(
     "z3c.etestbrowser.testing.ExtendedTestBrowser now speaks WSGI, so please "
-    "use it. This BBB import will go away in Version 4.0.",
+    "use it. This BBB import will go away in version 4.0.",
     Browser='z3c.etestbrowser:testing.ExtendedTestBrowser',
     ExtendedTestBrowser='z3c.etestbrowser:testing.ExtendedTestBrowser',
 )

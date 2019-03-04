@@ -17,10 +17,10 @@ $Id$
 """
 
 import z3c.etestbrowser.browser
-import zope.testbrowser.testing
+import zope.testbrowser.wsgi
 
 
-class ExtendedTestBrowser(zope.testbrowser.testing.Browser,
+class ExtendedTestBrowser(zope.testbrowser.wsgi.Browser,
                           z3c.etestbrowser.browser.ExtendedTestBrowser):
     """An extended testbrowser implementation.
 

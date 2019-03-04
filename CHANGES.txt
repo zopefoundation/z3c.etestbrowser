@@ -2,8 +2,20 @@
 CHANGES
 =======
 
-2.1 (unreleased)
+3.0 (unreleased)
 ================
+
+Backwards incompatible changes
+------------------------------
+
+- Add support for ``zope.testbrowser >= 5.0`` which speaks WSGI this requires
+  tests to be updated to WSGI.
+
+- Deprecate ``z3c.etestbrowser.wsgi`` which used to contain the WSGI variant
+  as it is now the default.
+
+- Drop the ``zope.app.testing`` extra introduced in version 2.0.0 as
+  it dropped its special ``zope.testbrowser`` support.
 
 - Adapt the code to newer ``lxml`` versions which no longer raise an exception
   if the string to be parsed by ``lxml.etree`` is empty. We now raise a

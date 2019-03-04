@@ -24,7 +24,6 @@ def read(*rnames):
 
 test_requires = [
     'zope.testrunner',
-    'zope.app.testing < 4',
     'zope.app.wsgi[testlayer] >= 4.0dev',
     'zope.app.zcmlfiles',
     'zope.app.server',
@@ -32,7 +31,7 @@ test_requires = [
 ]
 
 setup(name='z3c.etestbrowser',
-      version='2.1.dev0',
+      version='3.0.dev0',
       author='Christian Theune',
       author_email='mail@gocept.com',
       description='Extensions for zope.testbrowser',
@@ -65,12 +64,12 @@ setup(name='z3c.etestbrowser',
       tests_require=test_requires,
       extras_require={
           "test": test_requires,
-          "zope.app.testing": ["zope.app.testing < 4.0"],
       },
       install_requires=[
-          'setuptools',
           'lxml >= 2.2',
-          'zope.testbrowser >= 4.0, < 5.0',
+          'setuptools',
+          'zope.deferredimport',
+          'zope.testbrowser >= 5.0',
       ],
       include_package_data=True,
       zip_safe=False,

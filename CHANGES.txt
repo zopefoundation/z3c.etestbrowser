@@ -2,7 +2,7 @@
 CHANGES
 =======
 
-3.0 (unreleased)
+3.0 (2019-03-04)
 ================
 
 Backwards incompatible changes

@@ -11,17 +11,13 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
-"""Extensions for z3c.etestbrowser
-
-$Id$
-"""
+"""Extensions for z3c.etestbrowser."""
 
 import re
-import htmllib
-import formatter
 
 import lxml.etree
 import lxml.html
+import six
 
 import zope.testbrowser.browser
 
@@ -79,7 +75,8 @@ class ExtendedTestBrowser(zope.testbrowser.browser.Browser):
             match = RE_CHARSET.match(content_type)
             if match is not None:
                 charset = match.groups()[0]
-                content = content.decode(charset)
+                if six.PY2:  # pragma: PY2
+                    content = content.decode(charset)  # pragma: PY2
             self._etree = lxml.etree.HTML(content)
 
         if self._etree is None:
@@ -92,23 +89,10 @@ class ExtendedTestBrowser(zope.testbrowser.browser.Browser):
         if self._normalized_contents is None:
             indent(self.etree)
             self._normalized_contents = lxml.etree.tostring(
-                self.etree, pretty_print=True)
+                self.etree, pretty_print=True, encoding=six.text_type)
         return self._normalized_contents
 
     def _changed(self):
         super(ExtendedTestBrowser, self)._changed()
         self._etree = None
         self._normalized_contents = None
-
-    def pretty_print(self):
-        """Print a pretty (formatted) version of the HTML content.
-
-        If the content is not text/html then it is just printed.
-        """
-        if not self.headers['content-type'].lower().startswith('text/html'):
-            print self.contents
-        else:
-            parser = htmllib.HTMLParser(
-                formatter.AbstractFormatter(formatter.DumbWriter()))
-            parser.feed(self.contents)
-            parser.close()

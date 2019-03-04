@@ -17,9 +17,17 @@ Backwards incompatible changes
 - Drop the ``zope.app.testing`` extra introduced in version 2.0.0 as
   it dropped its special ``zope.testbrowser`` support.
 
+- Drop ``.browser.ExtendedTestBrowser.pretty_print`` as its requirements are
+  deprecated or even removed from Python's StdLib.
+
 - Adapt the code to newer ``lxml`` versions which no longer raise an exception
   if the string to be parsed by ``lxml.etree`` is empty. We now raise a
   ``ValueError`` in this case.
+
+Features
+--------
+
+- Add support for Python 3.6 up to 3.7.
 
 
 2.0.1 (2015-11-09)

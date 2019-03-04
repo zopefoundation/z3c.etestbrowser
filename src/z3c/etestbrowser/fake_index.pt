@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>Z3: </title>
+    <style type="text/css" media="all">@import url(http://localhost/@@/zope3_tablelayout.css);</style>
+  </head>
+  <body>
+    <!-- a copy of the standard zope 3 container view -->
+    <table id="layout" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td colspan="2" id="top">
+          <div id="global">
+            <div id="userDetails">
+              User:
+              Fallback unauthenticated principal
+              <a href="@@login.html?nextURL=http%3A//localhost/%40%40index.html">[Login]</a>
+            </div>
+            <a href="http://localhost/@@SelectedManagementView.html" name="top"><img src="http://localhost/@@/zope3logo.gif" /></a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div id="breadcrumbs">
+            Location:&nbsp;<a href="http://localhost/@@SelectedManagementView.html">[top]</a>
+            /
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td id="navigation">
+          <div id="navigators">
+            <!-- Navigation tree box -->
+            <!-- Ugly is better than lobotomized. -->
+            <div class="box" id="navigationTree">
+              <h4>Navigation</h4>
+              <div xmlns="http://www.zope.org/zope3xmltree"
+                   id="navtreecontents" class="body"
+                   onclick="treeclicked(event);">Loading...
+              </div>
+            </div>
+          </div>
+        </td>
+        <td id="content">
+          <div id="workspace">
+            <!-- OnlineHelp with popup support -->
+            <!-- note, we reverse the actions list 'cos they're packed to the
+                 screen from the right -->
+            <div id="viewspace">
+              <div id="message">
+              </div>
+              <div id="body">
+                <div>
+                  <table id="sortable" class="listing"
+                         summary="Content listing" cellpadding="2"
+                         cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>&nbsp;</th>
+                      <th>Name</th>
+                      <th>Title</th>
+                      <th>Created</th>
+                      <th>Modified</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+            </div>
+            <div id="context_information">
+              <div id="helpers">
+              </div>
+            </div>
+            <div class="spacer">
+              &nbsp;
+            </div>
+          </div>
+        </div>
+        <div id="footer" />
+        <div id="logger" />
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

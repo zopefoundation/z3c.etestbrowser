@@ -1,9 +1,8 @@
 Extended testbrowser
 --------------------
 
-This package provides some extensions to Zope 3's testbrowser. It is intended
-for extensions that have dependencies that we do not want to rely on in the
-Zope 3 core e.g. lxml.
+This package provides some extensions to ``zope.testbrowser``.  These are not
+included in the core because they have extra dependencies, such as ``lxml``.
 
 
 Requirements
@@ -26,7 +25,7 @@ Example:
   >>> from z3c.etestbrowser.testing import ExtendedTestBrowser
   >>> browser = ExtendedTestBrowser()
   >>> browser.open("http://localhost/")
-  >>> print browser.contents
+  >>> print(browser.contents)
   <!DOCTYPE ...>
   ...
   </html>
@@ -60,8 +59,8 @@ contains a German umlaut:
 
   >>> browser.xml_strict = False
   >>> browser.open('http://localhost/lxml.html')
-  >>> browser.etree.xpath("//span")[0].text
-  u'K\xfcgelblitz.'
+  >>> browser.etree.xpath("//span")[0].text == u'K\xfcgelblitz.'
+  True
 
 Invalid XML/HTML responses
 ++++++++++++++++++++++++++
@@ -81,26 +80,6 @@ general TestBrowser use:
   ValueError: ...
 
 
-Pretty printing
-~~~~~~~~~~~~~~~
-
-Sometimes a normal `print` of the browsers contents is hard to read for
-debugging:
-
-  >>> browser.open('http://localhost/')
-  >>> print browser.contents
-  <!DOCTYPE html ...
-    ...Name...Title...Created...Modified...
-
-The extended test browser provides a method to provide a formatted version of
-the HTML (using htmllib internally):
-
-  >>> browser.pretty_print()
-  @import url(http://localhost/@@/zope3_tablelayout.css); User: Fallback
-  unauthenticated principal [Login][1] (image)[2] Location:...[top][3] /
-  Navigation
-  Loading... ... Name Title Created Modified ...
-
 HTML/XML normalization
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -109,7 +88,7 @@ testing examples with HTML or XML a bit easier when unimportant details like
 whitespace are changing:
 
   >>> browser.open('http://localhost/funny.html')
-  >>> print browser.contents
+  >>> print(browser.contents)
   <html>
     <head>
       <title>Foo</title>
@@ -124,7 +103,7 @@ whitespace are changing:
 
 versus
 
-  >>> print browser.normalized_contents
+  >>> print(browser.normalized_contents)
   <html>
     <head>
       <title>Foo</title>

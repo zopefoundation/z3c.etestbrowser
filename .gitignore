@@ -8,5 +8,6 @@ __pycache__
 bin/
 develop-eggs/
 eggs/
+htmlcov/
 include/
 lib/

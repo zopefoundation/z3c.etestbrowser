@@ -11,7 +11,7 @@ Example:
   >>> import z3c.etestbrowser.wsgi
   >>> browser = z3c.etestbrowser.wsgi.Browser(wsgi_app=wsgi_app)
   >>> browser.open("http://localhost/")
-  >>> print browser.contents
+  >>> print(browser.contents)
   <!DOCTYPE ...>
   ...
   </html>

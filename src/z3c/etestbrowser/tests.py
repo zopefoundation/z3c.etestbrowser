@@ -47,7 +47,10 @@ def test_suite():
         "over_the_wire.txt",
         "wsgi.txt",
         setUp=setUpWSGI,
-        optionflags=doctest.NORMALIZE_WHITESPACE | doctest.ELLIPSIS)
+        optionflags=(
+            doctest.NORMALIZE_WHITESPACE
+            | doctest.ELLIPSIS
+            | doctest.IGNORE_EXCEPTION_DETAIL))
     wsgi_test.layer = wsgi_layer
     suite.addTest(wsgi_test)
     return suite

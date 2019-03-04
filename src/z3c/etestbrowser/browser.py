@@ -75,8 +75,8 @@ class ExtendedTestBrowser(zope.testbrowser.browser.Browser):
             match = RE_CHARSET.match(content_type)
             if match is not None:
                 charset = match.groups()[0]
-                if six.PY2:  # pragma: no cover
-                    content = content.decode(charset)  # pragma: no cover
+                if six.PY2:  # pragma: PY2
+                    content = content.decode(charset)  # pragma: PY2
             self._etree = lxml.etree.HTML(content)
 
         if self._etree is None:

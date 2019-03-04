@@ -1,6 +1,7 @@
 [run]
 branch = True
 source = z3c.etestbrowser
+plugins = coverage_python_version
 
 [report]
 precision = 2

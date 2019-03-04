@@ -14,7 +14,7 @@ matrix:
       after_success:
 install:
   - pip install -U pip setuptools zope.testrunner
-  - pip install -U coveralls coverage
+  - pip install -U coveralls coverage coverage-python-version
   - pip install -U -e ".[test]"
 script:
   - coverage run -m zope.testrunner --test-path=src --auto-color

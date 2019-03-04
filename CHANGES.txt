@@ -57,7 +57,7 @@ Features
 - Added ``z3c.etestbrowser.wsgi.ExtendedTestBrowser``, a variant that can be
   used when the test layer was set up using ``using
   zope.app.wsgi.testlayer``. see
-  `Extended testbrowser for zope.testbrowser.wsgi`_.
+  `Deprecated special support for zope.testbrowser.wsgi`_.
 
 
 1.4.0 (2010-07-08)

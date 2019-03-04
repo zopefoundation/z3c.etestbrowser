@@ -88,8 +88,8 @@ class ExtendedTestBrowser(zope.testbrowser.browser.Browser):
     def normalized_contents(self):
         if self._normalized_contents is None:
             indent(self.etree)
-            self._normalized_contents = lxml.etree.tounicode(
-                self.etree, pretty_print=True)
+            self._normalized_contents = lxml.etree.tostring(
+                self.etree, pretty_print=True, encoding=six.text_type)
         return self._normalized_contents
 
     def _changed(self):

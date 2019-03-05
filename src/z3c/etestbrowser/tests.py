@@ -11,10 +11,7 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
-"""Testing for z3c.etestbrowser
-
-$Id$
-"""
+"""Testing z3c.etestbrowser."""
 
 import doctest
 import os.path
@@ -43,9 +40,9 @@ def test_suite():
     suite = unittest.TestSuite()
 
     wsgi_test = doctest.DocFileSuite(
-        "README.txt",
-        "over_the_wire.txt",
-        "wsgi.txt",
+        "README.rst",
+        "over_the_wire.rst",
+        "wsgi.rst",
         setUp=setUpWSGI,
         optionflags=(
             doctest.NORMALIZE_WHITESPACE

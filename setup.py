@@ -49,11 +49,11 @@ setup(name='z3c.etestbrowser',
       author_email='mail@gocept.com',
       description='Extensions for zope.testbrowser',
       long_description=(
-          read('README.txt') + '\n\n' +
-          read('src', 'z3c', 'etestbrowser', 'README.txt') + '\n\n' +
-          read('src', 'z3c', 'etestbrowser', 'wsgi.txt') + '\n\n' +
-          read('src', 'z3c', 'etestbrowser', 'over_the_wire.txt') + '\n\n' +
-          read('CHANGES.txt')
+          read('README.rst') + '\n\n' +
+          read('src', 'z3c', 'etestbrowser', 'README.rst') + '\n\n' +
+          read('src', 'z3c', 'etestbrowser', 'wsgi.rst') + '\n\n' +
+          read('src', 'z3c', 'etestbrowser', 'over_the_wire.rst') + '\n\n' +
+          read('CHANGES.rst')
       ),
       keywords="zope3 testbrowser lxml",
       classifiers=[

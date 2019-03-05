@@ -2,10 +2,10 @@
 CHANGES
 =======
 
-3.1 (unreleased)
-================
+3.0.1 (unreleased)
+==================
 
-- Nothing changed yet.
+- Fix deprecation declaration in ``.wsgi``.
 
 
 3.0 (2019-03-04)

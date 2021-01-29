@@ -12,4 +12,4 @@ with-docs = false
 with-sphinx-doctests = false
 
 [coverage]
-fail-under = 92
+fail-under = 93

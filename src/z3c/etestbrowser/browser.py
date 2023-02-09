@@ -15,10 +15,10 @@
 
 import re
 
-import lxml.etree
-import lxml.html
 import six
 
+import lxml.etree
+import lxml.html
 import zope.testbrowser.browser
 
 

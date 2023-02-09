@@ -16,8 +16,9 @@
 $Id$
 """
 
-import z3c.etestbrowser.browser
 import zope.testbrowser.wsgi
+
+import z3c.etestbrowser.browser
 
 
 class ExtendedTestBrowser(zope.testbrowser.wsgi.Browser,

@@ -16,9 +16,11 @@
 import doctest
 import os.path
 import unittest
-import z3c.etestbrowser
+
 import zope.app.wsgi.testlayer
 import zope.testbrowser.wsgi
+
+import z3c.etestbrowser
 
 
 class Layer(zope.testbrowser.wsgi.TestBrowserLayer,

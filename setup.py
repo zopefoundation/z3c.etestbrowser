@@ -48,12 +48,11 @@ test_requires = [
 setup(name='z3c.etestbrowser',
       version='4.0.dev0',
       author='Christian Theune',
-      author_email='mail@gocept.com',
+      author_email='zope-dev@zope.dev',
       description='Extensions for zope.testbrowser',
       long_description=(
           read('README.rst') + '\n\n' +
           read('src', 'z3c', 'etestbrowser', 'README.rst') + '\n\n' +
-          read('src', 'z3c', 'etestbrowser', 'wsgi.rst') + '\n\n' +
           read('src', 'z3c', 'etestbrowser', 'over_the_wire.rst') + '\n\n' +
           read('CHANGES.rst')
       ),
@@ -79,15 +78,13 @@ setup(name='z3c.etestbrowser',
       packages=find_packages('src'),
       package_dir={'': 'src'},
       namespace_packages=['z3c'],
-      test_suite='z3c.etestbrowser.tests.test_suite',
-      tests_require=test_requires,
+      python_requires='>=3.7',
       extras_require={
           "test": test_requires,
       },
       install_requires=[
           'lxml >= 2.2',
           'setuptools',
-          'six',
           'zope.deferredimport',
           'zope.testbrowser >= 5.0',
       ],

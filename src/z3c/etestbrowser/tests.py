@@ -44,12 +44,10 @@ def test_suite():
     wsgi_test = doctest.DocFileSuite(
         "README.rst",
         "over_the_wire.rst",
-        "wsgi.rst",
         setUp=setUpWSGI,
         optionflags=(
             doctest.NORMALIZE_WHITESPACE
-            | doctest.ELLIPSIS
-            | doctest.IGNORE_EXCEPTION_DETAIL))
+            | doctest.ELLIPSIS))
     wsgi_test.layer = wsgi_layer
     suite.addTest(wsgi_test)
     return suite

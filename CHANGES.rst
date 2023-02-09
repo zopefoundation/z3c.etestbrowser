@@ -5,11 +5,13 @@ CHANGES
 4.0 (unreleased)
 ================
 
-- Add support for Python 3.10, 3.11.
-
 - Drop support for Python 2.7, 3.5, 3.6.
 
-- Add support for Python 3.5, 3.8 and 3.9.
+- Add support for Python 3.8, 3.9, 3.10, 3.11.
+
+- Drop deprecated support for ``python setup.py test``.
+
+- Drop deprecated ``z3c.etestbrowser.wsgi``.
 
 
 3.0.1 (2019-03-05)

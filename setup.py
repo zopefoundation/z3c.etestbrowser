@@ -44,7 +44,7 @@ test_requires = [
 ]
 
 setup(name='z3c.etestbrowser',
-      version='3.1.dev0',
+      version='4.0.dev0',
       author='Christian Theune',
       author_email='mail@gocept.com',
       description='Extensions for zope.testbrowser',

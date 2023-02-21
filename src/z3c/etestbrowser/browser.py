@@ -17,8 +17,6 @@ import re
 
 import lxml.etree
 import lxml.html
-import six
-
 import zope.testbrowser.browser
 
 
@@ -70,14 +68,7 @@ class ExtendedTestBrowser(zope.testbrowser.browser.Browser):
             # encoding detection of libxml2.
             # We have a chance of knowing the encoding as Zope states this in
             # the content-type response header.
-            content = self.contents
-            content_type = self.headers['content-type']
-            match = RE_CHARSET.match(content_type)
-            if match is not None:
-                charset = match.groups()[0]
-                if six.PY2:  # pragma: PY2
-                    content = content.decode(charset)  # pragma: PY2
-            self._etree = lxml.etree.HTML(content)
+            self._etree = lxml.etree.HTML(self.contents)
 
         if self._etree is None:
             raise ValueError(
@@ -89,10 +80,10 @@ class ExtendedTestBrowser(zope.testbrowser.browser.Browser):
         if self._normalized_contents is None:
             indent(self.etree)
             self._normalized_contents = lxml.etree.tostring(
-                self.etree, pretty_print=True, encoding=six.text_type)
+                self.etree, pretty_print=True, encoding=str)
         return self._normalized_contents
 
     def _changed(self):
-        super(ExtendedTestBrowser, self)._changed()
+        super()._changed()
         self._etree = None
         self._normalized_contents = None
